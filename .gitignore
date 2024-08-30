@@ -1,0 +1,60 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# MacOS files
+.DS_Store
+
+# Vim swap files
+*.swp
+
+# VSCode directories and files
+.vscode/
+.idea/
+
+# Optional coverage directory
+coverage/
+
+# Build directory
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/

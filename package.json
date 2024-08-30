@@ -1,0 +1,37 @@
+{
+  "name": "youtopia",
+  "version": "1.0.0",
+  "description": "the youtube video downloader",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Talha6891/youtopia.git"
+  },
+  "keywords": [
+    "youtube",
+    "downloader",
+    "youtopia"
+  ],
+  "author": "Talha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Talha6891/youtopia/issues"
+  },
+  "homepage": "https://github.com/Talha6891/youtopia#readme",
+  "dependencies": {
+    "@distube/ytdl-core": "^4.14.4",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
