@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtopia - <%= title %></title>
+    <link href="/icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css" />
+    
+</head>
+<body>
+    <!-- header -->
+    <%- include('partials/header') %> 
+    
+    <main>
+        <!-- search section -->
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">YouTube Video Downloader</h5>
+                            <form action="/video-info" method="get" class="d-flex flex-column flex-lg-row gap-3">
+                                <input type="text" class="form-control flex-grow-1" name="url" id="searchInput" placeholder="Enter YouTube URL" required>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- search section end -->
+         
+         <!-- video details section -->
+            <% if (video && video.title) { %>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center"><%= video.title %></h5>
+                                <div class="text-center mb-4">
+                                    <img src="<%= video.thumbnail %>" class="img-fluid" alt="<%= video.title %>">
+                                </div>
+
+                                <h6 class="mb-3">Select Format</h6>
+                                <form action="/download" method="get">
+                                    <input type="hidden" name="url" value="<%= video.url %>">
+
+                                    <div class="mb-3">
+                                        <label for="format" class="form-label">Video Quality</label>
+                                        <select name="format" id="format" class="form-select">
+                                            <% video.formats.forEach(format => { %>
+                                                <option value="<%= format.itag %>"><%= format.qualityLabel %> - <%= format.container %></option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="audioFormat" class="form-label">Audio Only</label>
+                                        <select name="audioFormat" id="audioFormat" class="form-select">
+                                            <% video.audioFormats.forEach(audioFormat => { %>
+                                                <option value="<%= audioFormat.itag %>"><%= audioFormat.container %> - <%= audioFormat.audioBitrate %>kbps</option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success w-100">Download</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } else if (error) { %>
+                <div class="alert alert-danger mt-4"><%= error %></div>
+            <% } %>
+         <!-- video details section end -->
+
+            <!-- Instructions and Features -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Instructions</h5>
+                            <ul class="list-unstyled">
+                                <li>1. Paste the YouTube video URL.</li>
+                                <li>2. Click the "Search" button to retrieve video information.</li>
+                                <li>3. Select the video or audio format and click "Download".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Features</h5>
+                            <ul class="list-unstyled">
+                                <li>• Unlimited downloads and always free</li>
+                                <li>• High-speed video converter</li>
+                                <li>• No registration required</li>
+                                <li>• Support downloading with all formats</li>
+                                <li>• No pop-up or annoying ads</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
